@@ -122,22 +122,24 @@ class HBNBCommand(cmd.Cmd):
         if line[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
+        dt = 0
         if len(line) > 1:
             dt = {}
             for i in range(1, len(line)):
                 key = line[i][:line[i].find('=')]
                 value = line[i][line[i].find('=')+1:]
                 if value[0] == '"' and value[-1] == '"':
-                    value = value[1:-1]
-                    value = value.replace('_', ' ')
-                    if '"' in value:
-                        value = value.replace('"', '\\"')
+                    value = value[1:-1].replace('_', ' ')
+#                    if '"' in value:
+#                        value = value.replace('"', '\\"')
                 elif value[0] != '"' and value[-1] != '"' and '.' in value:
                     value = float(value)
                 elif value[0] != '"' and value[-1] != '"' and '.' not in value:
                     value = int(value)
                 dt[key] = value
-        new_instance = HBNBCommand.classes[line[0]](**dt)
+        new_instance = HBNBCommand.classes[line[0]]()
+        if dt:
+            new_instance.__dict__.update(dt)
         storage.save()
         print(new_instance.id)
         storage.save()
