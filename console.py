@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
                     value = float(value)
                 elif value[0] != '"' and value[-1] != '"' and '.' not in value:
                     value = int(value)
-                dt[key] = value
+#                dt[key] = value
                 tmp = ""
                 for i in range(0, len(value)):
                     if value[i] == "\\" and value[i+1] == '"':
