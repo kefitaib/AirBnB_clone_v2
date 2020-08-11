@@ -130,24 +130,15 @@ class HBNBCommand(cmd.Cmd):
                 if value[0] == '"' and value[-1] == '"':
                     value = value[1:-1]
                     value = value.replace('_', ' ')
-                    tmp = ""
-                    for i in range(0, len(value)):
-                        if value[i] == "\\" and value[i+1] == '"':
-                            continue
-                        else:
-                            tmp += value[i]
-                    value = tmp
+                    if '"' in value:
+                        value = value.replace('"', '\\"')
                 elif value[0] != '"' and value[-1] != '"' and '.' in value:
                     value = float(value)
                 elif value[0] != '"' and value[-1] != '"' and '.' not in value:
                     value = int(value)
                 dt[key] = value
-
-        new_instance = HBNBCommand.classes[line[0]]()
-        if dt:
-            for key, value in dt.items():
-                new_instance.__dict__.update(dt)
-            storage.save()
+        new_instance = HBNBCommand.classes[line[0]](**dt)
+        storage.save()
         print(new_instance.id)
         storage.save()
 
