@@ -130,8 +130,6 @@ class HBNBCommand(cmd.Cmd):
                 value = line[i][line[i].find('=')+1:]
                 if value[0] == '"' and value[-1] == '"':
                     value = value[1:-1].replace('_', ' ')
-#                    if '"' in value:
-#                        value = value.replace('"', '\\"')
                 elif value[0] != '"' and value[-1] != '"' and '.' in value:
                     value = float(value)
                 elif value[0] != '"' and value[-1] != '"' and '.' not in value:
@@ -140,8 +138,8 @@ class HBNBCommand(cmd.Cmd):
         new_instance = HBNBCommand.classes[line[0]]()
         if dt:
             new_instance.__dict__.update(dt)
-        storage.save()
         print(new_instance.id)
+        storage.new(new_instance)
         storage.save()
 
     def help_create(self):
@@ -224,11 +222,11 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all(args).items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all().items():
                 print_list.append(str(v))
 
         print(print_list)
