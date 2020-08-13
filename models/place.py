@@ -31,5 +31,5 @@ class Place(BaseModel, Base):
 
             from models import storage
 
-            l = storage.all('Review')
+            l = storage.all(Review)
             return [v for k, v in l.items() if v.place_id == self.id]
