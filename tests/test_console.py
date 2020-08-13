@@ -48,3 +48,10 @@ class TestConsole(unittest.TestCase):
             HBNBCommand().onecmd('all State')
         s = f.getvalue()
         self.assertTrue("longitude': -12.43789" in s)
+
+    def test_name(self):
+        with patch('sys.stdout', new=StringIO()) as f:
+            HBNBCommand().onecmd('create State name="California"')
+            HBNBCommand().onecmd('all State')
+        s = f.getvalue()[:-1]
+        self.assertTrue("California" in s)
