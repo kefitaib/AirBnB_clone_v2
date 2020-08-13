@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float
 from os import getenv
 from models.review import Review
+from sqlalchemy.orm import relationship
 
 
 class Place(BaseModel, Base):
