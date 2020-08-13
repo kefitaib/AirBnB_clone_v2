@@ -13,8 +13,8 @@ class FileStorage:
         if not cls:
             return FileStorage.__objects
         dt = {}
-        for key, obj in FileStorage.__objects.items():
-            if key.split(".")[0] == cls:
+        for key, obj in self.__objects.items():
+            if cls == type(obj):
                 dt[key] = obj
         return dt
 
