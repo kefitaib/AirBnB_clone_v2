@@ -4,6 +4,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Float
 from os import getenv
+from models.review import Review
 
 
 class Place(BaseModel, Base):
@@ -30,5 +31,5 @@ class Place(BaseModel, Base):
 
             from models import storage
 
-            l = storage.all('Review')
+            l = storage.all(Review)
             return [v for k, v in l.items() if v.place_id == self.id]
