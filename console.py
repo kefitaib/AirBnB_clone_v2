@@ -220,7 +220,7 @@ class HBNBCommand(cmd.Cmd):
 
         if getenv("HBNB_TYPE_STORAGE") == 'db':
             args = args.split(' ')[0]
-            for k, v in storage.all(eval(args)).items():
+            for k, v in storage.all(args).items():
                 print_list.append(str(v))
 
         else:
