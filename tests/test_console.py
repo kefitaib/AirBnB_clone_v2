@@ -11,12 +11,6 @@ from unittest.mock import patch
 class TestConsole(unittest.TestCase):
     """ class test """
 
-    def tearDown(self):
-        try:
-            os.remove("file.json")
-        except:
-            pass
-
     def test_create(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("create")
