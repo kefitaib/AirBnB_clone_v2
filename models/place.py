@@ -3,11 +3,11 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Table, ForeignKey, Float
-from sqlalchemy import *
 from os import getenv
 from models.review import Review
 from models.amenity import Amenity
 from sqlalchemy.orm import relationship
+from models import storage
 
 place_amenity = Table('place_amenity', Base.metadata,
                       Column('place_id', String(60), ForeignKey('places.id'),
@@ -41,8 +41,6 @@ class Place(BaseModel, Base):
         def reviews(self):
             """ get list of reviews"""
 
-            from models import storage
-
             ll = storage.all(Review)
             return [v for k, v in ll.items() if v.place_id == self.id]
 
@@ -52,7 +50,6 @@ class Place(BaseModel, Base):
             amenity_ids that contains all Amenity.id linked to the Place
             """
 
-            from models import storage
             alist = []
             for amen in storage.all(Amenity).values():
                 if amen.place.id == self.id:
