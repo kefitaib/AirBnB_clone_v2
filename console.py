@@ -132,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
                 values = lines[i][lines[i].find('=')+1:]
                 if values[0] == '"' and values[-1] == '"':
                     value = value[1:-1].replace('_', ' ')
-                elif value[0] != '"' and value[-1] != '"' and '.' in value:
+                elif value[0] != '"' and values[-1] != '"' and '.' in value:
                     value = float(value)
                 elif value[0] != '"' and value[-1] != '"' and '.' not in value:
                     value = int(value)
