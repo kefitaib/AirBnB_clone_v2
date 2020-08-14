@@ -128,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
         if len(line) > 1:
             dt = {}
             for i in range(1, len(line)):
-                key = line[i][:line[i].find('=')]
+                keys = line[i][:line[i].find('=')]
                 value = line[i][line[i].find('=')+1:]
                 if value[0] == '"' and value[-1] == '"':
                     value = value[1:-1].replace('_', ' ')
@@ -136,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
                     value = float(value)
                 elif value[0] != '"' and value[-1] != '"' and '.' not in value:
                     value = int(value)
-                dt[key] = value
+                dt[keys] = value
         new_instance = HBNBCommand.classes[line[0]]()
         if dt:
             new_instance.__dict__.update(dt)
