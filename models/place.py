@@ -54,7 +54,7 @@ class Place(BaseModel, Base):
 
             alist = []
             for amen in storage.all(Amenity).values():
-                if amen.Amenity_id == self.id:
+                if amen.id in self.amenity_ids:
                     alist.append(amen)
             return alist
 
@@ -64,5 +64,6 @@ class Place(BaseModel, Base):
             amenity_ids. This method should accept only Amenity object,
             otherwise, do nothing.
             """
+
             if type(obj) == Amenity:
                 self.amenity_ids.append(obj.id)
