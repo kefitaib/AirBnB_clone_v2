@@ -128,7 +128,7 @@ class HBNBCommand(cmd.Cmd):
         if len(lines) > 1:
             dt = {}
             for i in range(1, len(lines)):
-                keys = line[i][:line[i].find('=')]
+                keys = lines[i][:line[i].find('=')]
                 value = line[i][line[i].find('=')+1:]
                 if value[0] == '"' and value[-1] == '"':
                     value = value[1:-1].replace('_', ' ')
