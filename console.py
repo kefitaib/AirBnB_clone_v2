@@ -120,14 +120,14 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
             return
-        line = args.split()
-        if line[0] not in HBNBCommand.classes:
+        lines = args.split()
+        if lines[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
         dt = 0
-        if len(line) > 1:
+        if len(lines) > 1:
             dt = {}
-            for i in range(1, len(line)):
+            for i in range(1, len(lines)):
                 keys = line[i][:line[i].find('=')]
                 value = line[i][line[i].find('=')+1:]
                 if value[0] == '"' and value[-1] == '"':
