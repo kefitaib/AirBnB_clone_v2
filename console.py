@@ -137,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
                 elif value[0] != '"' and value[-1] != '"' and '.' not in value:
                     value = int(value)
                 dt[keys] = value
-        new_instance = HBNBCommand.classes[line[0]]()
+        new_instance = HBNBCommand.classes[lines[0]]()
         if dt:
             new_instance.__dict__.update(dt)
         print(new_instance.id)
