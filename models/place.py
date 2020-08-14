@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Table, ForeignKey, Float
+from sqlalchemy import *
 from os import getenv
 from models.review import Review
 from models.amenity import Amenity
