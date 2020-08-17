@@ -2,7 +2,8 @@
 # Prepare your web servers 
 apt-get -y update
 apt-get -y install nginx
-sudo mkdir -p /data/web_static/shared/ /data/web_static/releases/test/
+mkdir -p /data/web_static/shared/
+mkdir -p /data/web_static/releases/test/
 echo "Holberton" > /data/web_static/releases/test/index.html
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
