@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Prepare your web servers 
+# Prepare your web servers
+
 apt-get -y update
 apt-get -y install nginx
 mkdir -p /data/web_static/shared/
 mkdir -p /data/web_static/releases/test/
-echo "Holberton" > /data/web_static/releases/test/index.html
+echo "Holberton School" > /data/web_static/releases/test/index.html
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
 printf %s "server {
@@ -21,10 +22,12 @@ printf %s "server {
       internal;
     }
     add_header X-Served-By $HOSTNAME;
-    
+
+
     location /hbnb_static {
     	alias /data/web_static/current;
     	index  index.html index.htm;
     }
 }" > /etc/nginx/sites-available/default
+
 service nginx restart
