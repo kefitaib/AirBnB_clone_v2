@@ -24,6 +24,7 @@ def hello():
 def display_C(text):
     """ function """
 
+    text = text.replace('_', ' ')
     return 'C ' + text
 
 if __name__ == "__main__":
