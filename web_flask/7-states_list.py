@@ -18,7 +18,7 @@ def teardown():
 def hello_world():
     """ function """
 
-    s = storage.all(State)
+    s = storage.all('State')
     return render_template('7-states_list.html', s=s)
 
 if __name__ == "__main__":
