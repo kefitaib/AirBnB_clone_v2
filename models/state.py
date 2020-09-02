@@ -17,7 +17,7 @@ class State(BaseModel, Base):
     if getenv('HBNB_TYPE_STORAGE') != 'db':
         @property
         def cities(self):
-            """ return city """
+            """ return city (from models import storage) """
 
             l = models.storage.all('City')
             return [v for k, v in l.items() if v.state_id == self.id]
